@@ -1,0 +1,114 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double fun, num1, num2, num3, step, x1, x2, D;
+            Console.WriteLine("1.Сложить.\n2.Вычесть.\n3.Умножить.\n4.Разделить.");
+            Console.WriteLine("5.Квадратный корень числа.\n6.Возведение числа в степень.\n7.Перевод числа в двоичную СС.");
+            Console.WriteLine("8.Нахождение корней квадратного уравнения.\n0.Выход. ");
+            fun = Convert.ToInt16(Console.ReadLine());
+            while (fun != 0)
+           { 
+                Console.Write("Введите число: ");
+                num1 = Convert.ToDouble(Console.ReadLine());
+
+                if ((fun == 1) || (fun == 2) || (fun == 3) || (fun == 4))
+                {
+                    Console.Write("Второе число: ");
+                    num2 = Convert.ToDouble(Console.ReadLine());
+
+                    if (fun == 1) {
+                    num1 += num2;
+                    Console.WriteLine(num1);
+                    }
+
+                    if (fun == 2){
+                    num1 -= num2;
+                    Console.WriteLine(num1);
+                    }
+
+                    if (fun == 3) {
+                    num1 *= num2;
+                    Console.WriteLine(num1);
+                    }
+
+                    if (fun == 4) {
+                    num1 /= num2;
+                    Console.WriteLine(num1);
+                    }
+
+                }
+                if ((fun == 5) || (fun == 6) || (fun == 7))
+                {
+                    if (fun == 5)
+                    {
+                        num1 = Math.Sqrt(num1);
+                        Console.WriteLine(num1);
+                    }
+
+                    if (fun == 6)
+                    {
+                        Console.WriteLine("Какая степень числа?");
+                        step = Convert.ToDouble(Console.ReadLine());
+                        num1 = Math.Pow(num1, step);
+                        Console.WriteLine(num1);
+                    }
+
+                    if (fun == 7)
+                    {
+                        int mod;
+                        int i = 0;
+                        int[] mas = new int[15];
+
+                        int inum = Convert.ToInt32(num1);
+                        while (inum >= 1)
+                        {
+                            mod = inum % 2;
+                            mas[i] = mod;
+                            i++;
+                            inum /= 2;
+                        }
+                        for (i = (mas.Length - 1); i >= 0; i--)
+                        {
+                            Console.Write(mas[i]);
+                            
+                        }
+                        Console.WriteLine();
+                    }
+                }
+                if (fun == 8)
+                {
+                    Console.Write("Второе число: ");
+                    num2 = Convert.ToDouble(Console.ReadLine());
+
+                    Console.Write("Третье число: ");
+                    num3 = Convert.ToDouble(Console.ReadLine());
+
+                    D = num2 * num2 - 4 * num1 * num3;
+                    D = Math.Sqrt(D);
+                    x1 = (-num2 + D) / (2 * num1);
+                    x2 = (-num2 - D) / (2 * num1);
+
+                    Console.WriteLine("x1 = " + x1);
+                    Console.WriteLine("x2 = " + x2);
+                }
+                
+                Console.WriteLine("Выберите следующее действие. ");
+                fun = Convert.ToInt16(Console.ReadLine());
+               
+            }
+            Console.Write("Окей ");
+            
+
+        }
+            
+    }
+}
